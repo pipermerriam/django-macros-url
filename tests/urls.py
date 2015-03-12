@@ -66,11 +66,11 @@ class TestRegexCompilation(unittest.TestCase):
 
     def test_uid(self):
         self.assertEqual(MacroUrlPattern('invoice/:uuid').compiled,
-                         '^invoice/(?P<uuid>[a-fA-F0-9]{8}-?[a-fA-F0-9]{4}-?[a-fA-F0-9]{4}-?[a-fA-F0-9]{4}-?[a-fA-F0-9]{12})$')
+                         '^invoice/(?P<uuid>[a-fA-F0-9]{8}-?[a-fA-F0-9]{4}-?[1345][a-fA-F0-9]{3}-?[a-fA-F0-9]{4}-?[a-fA-F0-9]{12})$')
 
     def test_strongurl(self):
         self.assertEqual(MacroUrlPattern('orders/:date/:uuid/products/:slug/:variant_id').compiled,
-                         '^orders/(?P<date>\\d{4}-(0?([1-9])|10|11|12)-((0|1|2)?([1-9])|[1-3]0|31))/(?P<uuid>[a-fA-F0-9]{8}-?[a-fA-F0-9]{4}-?[a-fA-F0-9]{4}-?[a-fA-F0-9]{4}-?[a-fA-F0-9]{12})/products/(?P<slug>[\\w-]+)/(?P<variant_id>\\d+)$')
+                         '^orders/(?P<date>\\d{4}-(0?([1-9])|10|11|12)-((0|1|2)?([1-9])|[1-3]0|31))/(?P<uuid>[a-fA-F0-9]{8}-?[a-fA-F0-9]{4}-?[1345][a-fA-F0-9]{3}-?[a-fA-F0-9]{4}-?[a-fA-F0-9]{12})/products/(?P<slug>[\\w-]+)/(?P<variant_id>\\d+)$')
 
     # noinspection PyProtectedMember
     def test_includes_end(self):

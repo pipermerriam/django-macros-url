@@ -130,3 +130,10 @@ class TestRegexUrlResolving(unittest.TestCase):
         self.assertIsNone(url("invoice/:uuid", 'view').resolve('invoice/123123-123123-1231231-1231312-3-1312312-'))
         for i in range(1, 1000):
             self.assertIsNotNone(url("invoice/:uuid", 'view').resolve('invoice/%s' % uuid.uuid4()))
+
+    def test_no_match_for_invalid_uuid(self):
+        """
+        UUID with invalid version.  The allowed versions are 1, 2, 4 and 5
+        xxxxxxxx-xxxx-Vxxx-xxx-xxxxxxxxxxxx
+        """
+        self.assertIsNone(url("invoice/:uuid", 'view').resolve('invoice/3e41b04d-0978-9027-86c2-aa90c63ecb54'))
